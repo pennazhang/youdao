@@ -99,11 +99,11 @@ void MainWindow::dispatchSocketMessage()
 	nLen -= start;
 	unsigned int msgLen = 0;
 	unsigned int cmdID;
-	unsigned int tempData;
+//	unsigned int tempData;
 	if (nLen > 4)
 	{
 		msgLen = *(unsigned int *)(pData + 4);
-		if (msgLen <= nLen)
+		if (msgLen <= (UINT32)nLen)
 		{
 			cmdID = *(unsigned int *)(pData + 8);
 			switch(cmdID)
@@ -383,8 +383,8 @@ void MainWindow::onRecvUDPData()
 	GET_BOOK_LIST_MSG *pBookListMsg = (GET_BOOK_LIST_MSG *)aucData;
 	GET_BOOK_LIST_ACK_MSG *pBookListAckMsg = (GET_BOOK_LIST_ACK_MSG *)aucData;
 	DELETE_BOOK_FROM_DEVICE_MSG *pDeleteBookMsg = (DELETE_BOOK_FROM_DEVICE_MSG *)aucData;
-	COPY_FILE_TO_DEVICE_MSG *pCopyFileData = (COPY_FILE_TO_DEVICE_MSG *)aucData;
-	COPY_BOOK_FROM_DEVICE_MSG *pCopyFromDevice = (COPY_BOOK_FROM_DEVICE_MSG *)aucData;
+//	COPY_FILE_TO_DEVICE_MSG *pCopyFileData = (COPY_FILE_TO_DEVICE_MSG *)aucData;
+//	COPY_BOOK_FROM_DEVICE_MSG *pCopyFromDevice = (COPY_BOOK_FROM_DEVICE_MSG *)aucData;
 
 	while (m_pUdpSocket->hasPendingDatagrams()) 
 	{

@@ -171,7 +171,7 @@ typedef struct
 	UINT32		m_size;			// size = sizeof(GET_BOOK_LIST_MSG)
 	CMD_ID		m_cmdID;		//  m_cmdID = CMD_ID_COPY_FROM_DEVICE_ACK
 	UINT32		m_bookIndex;	// 0 - (bookCount - 1)
-	UINT8		m_fileData[0];	// fileSize = m_size - 16
+	UINT8		m_fileData[1];	// fileSize = m_size - 16
 } COPY_BOOK_FROM_DEVICE_MSG_ACK;
 
 #pragma pack()

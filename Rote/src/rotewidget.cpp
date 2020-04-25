@@ -315,7 +315,7 @@ void RoteWidget::paintEvent(QPaintEvent * /*event */)
 
 void RoteWidget::onClickForget()
 {
-	YoudaoWord *pWord = g_roteManager.getWord(m_currentWordIndex);
+//	YoudaoWord *pWord = g_roteManager.getWord(m_currentWordIndex);
 	/* If the word is roted for the first time, we need to record it in the browser widget */
 	if ((g_roteManager.getRoteCount(m_currentWordIndex) == 0) && (m_nForgottenWordCount < TOTAL_ROTE_COUNT))
 	{

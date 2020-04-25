@@ -326,7 +326,7 @@ void InfoWidget::onClickNote()
 	}
 }
 
-void InfoWidget::bookSelected(QListWidgetItem * item)
+void InfoWidget::bookSelected(QListWidgetItem * /*item*/)
 {
 	qDebug() << "Item selected!";
 }
