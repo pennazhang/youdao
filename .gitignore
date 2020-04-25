@@ -1,0 +1,25 @@
+#
+# NOTE! Don't add files that are generated in specific
+# subdirectories here. Add them in the ".gitignore" file
+# in that subdirectory instead.
+#
+# Normal rules
+#
+
+*.o
+Makefile
+moc_*
+.qmake.stash
+Makefile.Release
+Makefile.Debug
+*.exe
+release/
+debug/
+*.Debug
+*.Release
+*.vcxproj
+*.vcxproj.*
+*_plugin_import.cpp
+*.opensdf
+*.sdf
+out/

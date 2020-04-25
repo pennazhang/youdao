@@ -1,0 +1,80 @@
+#m_pLineFrame {
+	color: #d0d0d0;
+}
+
+#m_pBriefEdit {
+	font-size: 12px;
+}
+
+QTabWidget {
+	background-color: transparent;
+}
+
+QLineEdit {
+	Font: 12px;
+}
+
+#DisableEdit {
+    background-color: transparent; 
+}
+
+QLabel {
+	Font: 12px;
+}
+
+QCheckBox {
+	Font: 12px;
+}
+
+QMessageBox {
+	Font: 12px;
+}
+
+#Equalization {
+	alignment: right;
+	font: 21px;
+}
+
+ QTabBar::tab {
+	font: 12px;
+ }
+
+ QRadioButton {
+    font: 12px;
+}
+
+QPushButton {
+    font: 12px;
+}
+
+#m_pRefreshButton {
+	background-image: url(:/refresh.png);
+}
+
+#m_pCopyToDevice {
+    background: url(:/SaveDevice.png) center right no-repeat;
+}
+
+
+#m_pCopyToComputer {
+    background: url(:/SaveToComputer.png) bottom right no-repeat;
+}
+
+#m_pBackupButton {
+    background: url(:/Backup.png) bottom right no-repeat;
+}
+
+#m_pConnectButton {
+	background-image: url(:/connect.png);
+}
+
+#m_pConnectButton:disabled {
+	background-image: url(:/connect_disable.png);
+}
+
+QProgressBar {
+    border: 1px solid #AAAAAA;
+    border-radius: 2px;
+    text-align: center;
+    color: black;
+}

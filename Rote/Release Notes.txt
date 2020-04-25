@@ -1,0 +1,57 @@
+
+Version: 2.0.9.0  
+Release Time: Feb 15th, 2017
+Change: 
+
+New Function:	
+1. In the older version, the user need to use "Next Book" button to change a book one by one. Now the user can use a listView to select book he wanted.
+
+========================================================================
+
+Version: 2.0.8.0  
+Release Time: Nov 15th, 2016
+Change: 
+
+New Function:	
+1. Change the font size automatically according to the DPI.
+2. Fix some button size issue to fit the high DPI mobile device.
+
+========================================================================
+
+Version: 2.0.5.0  
+Release Time: Sep 18th, 2016
+Change: 
+
+New Function:	
+1. copy the words information in browser widget to Clipboard automatically.
+2. when exit roting, the browser widget will show the unfinished words.
+3. Show the phonetic of words in browser widget.
+
+========================================================================
+
+Version: 2.0.4.0  
+Release Time: Jun 15th, 2016
+Change: 
+
+Change:	
+1. Change the count of the stored books from 10 to 30.
+2. Enable sleep mode in IOS to save power.
+3. Change the button position of "Exit" button in RoteWidget.
+
+========================================================================
+
+Version: 2.0.3.0  
+Release Time: Jun 6th, 2016
+Change: 
+
+New Function:	
+1. Show the words count and total score at the same time for every book (add total score).
+2. Show rote result when roting is finished.
+
+========================================================================
+
+Version: 2.0.1.0  
+Release Time: Jun 3rd, 2016
+Change: 
+
+Bug Fix:	When start the Rote, the App will read the setting to decide the current book. If the book index range is bigger than 3, then the App think that's a invalid book index, and will reset it to 1. After bug fixing, the App won't reset the book index to 1 any more.

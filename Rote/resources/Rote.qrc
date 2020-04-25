@@ -1,0 +1,11 @@
+<RCC>
+  <qresource>
+    <file>Rote.qss</file>
+    <file>Rote.ico</file>
+    <file>Background.png</file>
+    <file>select.png</file>
+    <file>unselect.png</file>
+    <file>Rote_en.qm</file>
+    <file>Rote_zh.qm</file>
+  </qresource>
+</RCC>

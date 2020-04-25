@@ -1,0 +1,109 @@
+#BigLabel {
+    Font: 24px;
+    alignment: right;
+    background-color: transparent;
+}
+
+#m_pBriefEdit {
+	Font: 14px;
+}
+
+QLabel {
+    Font: 18px;
+    alignment: right;
+    background-color: transparent;
+}
+
+#RoteWidget {
+/*	background-color: #FFFF00;  */
+	background: qlineargradient(x1: 0, y1: 0, x2: 0, y2: 1,
+				stop: 0 #ffffff, stop: 0.05 #d8d8d8,
+				stop: 0.1 #cbcbcb, stop: 0.15 #989898, 
+				stop: 0.2 #808080, stop: 0.9 #3f3f3f,
+				stop: 0.95 #b8b8b8, stop: 1 #ffffff);
+}
+
+/*
+QPushButton {
+	border-radius: 3;
+	Font: 18px;
+    margin: 0px;
+    border: 1px solid #404040;
+	background: qlineargradient(x1: 0, y1: 0, x2: 0, y2: 1,
+				stop: 0 #fafafa, stop: 1 #d5eefa);
+}
+*/
+
+#NumberDialogEditLine {
+	padding-left: 5px;
+	Font: 22px;
+}
+
+#m_pListWidget {
+        Font: 18px;
+}
+
+QPushButton {
+	Font: 18px;
+}
+
+QSpinBox {
+	Font: 18px;
+    background-color: transparent;
+    border: 1px solid #404040;
+}
+
+QLineEdit {
+    Font: 18px;
+    background-color: transparent;
+    border: 1px solid #404040;
+}
+
+#m_pWordBrowser {
+    Font: 24px;
+	border: 0px; 
+}
+
+#m_pBigWordBrowser {
+    Font: 32px;
+	border: 0px; 
+}
+
+#m_pBrowser {
+    Font: 18px;
+	border: 0px; 
+}
+
+#NumberButton {
+	border-radius: 3;
+	Font: 18px;
+    margin: 0px;
+    border: 1px solid #404040;
+	background: qlineargradient(x1: 0, y1: 0, x2: 0, y2: 1,
+				stop: 0 #fafafa, stop: 1 #d5eefa);
+
+}
+
+QTextEdit {
+    background-color: transparent;
+    Font: 18px;
+    border: 1px solid #404040;
+	border-radius: 3;
+}
+
+QTextBrowser {
+    background-color: transparent;
+    Font: 18px;
+    border: 1px solid #404040;
+	border-radius: 3;
+}
+
+#CheckButton:checked {
+	border-radius: 3;
+	border-image: url(:/select.png);
+}
+
+#CheckButton:!checked {
+	border-radius: 3;
+	border-image: url(:/unselect.png);
+}

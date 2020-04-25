@@ -1,0 +1,15 @@
+<RCC>
+  <qresource>
+    <file>YoudaoWord.qss</file>
+    <file>YoudaoWord.ico</file>
+    <file>refresh.png</file>
+    <file>connect.png</file>
+    <file>connect_disable.png</file>
+    <file>youdao_en.qm</file>
+    <file>youdao_zh.qm</file>
+	  <file>ActivityIndicator.png</file>
+    <file>SaveDevice.png</file>
+    <file>SaveToComputer.png</file>
+    <file>Backup.png</file>
+  </qresource>
+</RCC>
