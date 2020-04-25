@@ -205,7 +205,11 @@ bool SettingWidget::loadDatabase(QString dbFileName)
 	m_level1Count = level1;
 	m_level2Count = level2;
 
-	if ((!g_database.LoadFromDBByPriority(dbFileName, m_pAllBookWord, m_wordCount, nTotalCount)) || (!g_database.getPriority(dbFileName, g_param1, g_param2)))
+    if (!g_database.getPriority(dbFileName, g_param1, g_param2))
+    {
+        return (false);
+    }
+    if (!g_database.LoadFromDBByPriority(dbFileName, m_pAllBookWord, m_wordCount, nTotalCount))
 	{
 		return (false);
 	}

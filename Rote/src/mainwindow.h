@@ -15,7 +15,7 @@
 #include "bookInfo.h"
 
 /* Not used, but we need to mark it */
-#define SOFT_VERSION	"2.1.1.0"
+#define SOFT_VERSION	"2.1.2.0"
 
 
 #define LOCAL_PORT		45453
