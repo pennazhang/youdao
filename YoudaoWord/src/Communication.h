@@ -45,8 +45,8 @@ typedef enum
 	CMD_ID_GET_BOOK_LIST_ACK	= 3,
 	CMD_ID_GET_BOOK_INFO		= 4,
 	CMD_ID_GET_BOOK_INFO_ACK	= 5,
-	CMD_ID_COPY_TO_DEVICE		= 6,
-	CMD_ID_COPY_TO_DEVICE_ACK	= 7,
+//	CMD_ID_COPY_TO_DEVICE		= 6,
+//	CMD_ID_COPY_TO_DEVICE_ACK	= 7,
 	CMD_ID_DELETE_FROM_DEVICE		= 8,
 	CMD_ID_DELETE_FROM_DEVICE_ACK	= 9,
 	CMD_ID_COPY_FILE_TO_DEVICE		= 10,
@@ -165,7 +165,7 @@ typedef struct
 	UINT32		m_size;			// size = sizeof(GET_BOOK_LIST_MSG)
 	CMD_ID		m_cmdID;		//  m_cmdID = CMD_ID_COPY_FROM_DEVICE_ACK
 	UINT32		m_bookIndex;	// 0 - (bookCount - 1)
-	UINT8		m_fileData[0];	// fileSize = m_size - 16
+	UINT8		m_fileData[1];	// fileSize = m_size - 16
 } COPY_BOOK_FROM_DEVICE_MSG_ACK;
 
 #pragma pack()
@@ -197,8 +197,6 @@ public:
 	void getBookList(void);
 	void copyFileToDevice(QString dbPath);
 	void copyFileNameToDevice(QString dbPath);
-	void saveFile(COPY_BOOK_FROM_DEVICE_MSG_ACK *pAck);
-    void resend();
 	void disconnectDevice();
 	bool isDeviceConnected();
 	void connectToDevice(QHostAddress deviceAddr, int devicePort);
@@ -208,8 +206,6 @@ public:
 			-1: End of the file.
 			0: normally copy 
 	*/
-	int copyFileToDevice(int frameIndex);	
-	void copyBookFromDevice(int bookIndex, int frameIndex);
 	void backupFile(int bookIndex);
 	void deleteFile(int bookIndex);
 	UPD_SOCKET *getUDPSocket(void) { return m_pSocket; }

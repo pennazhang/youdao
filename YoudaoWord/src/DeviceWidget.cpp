@@ -33,10 +33,6 @@ DeviceWidget::DeviceWidget(QWidget *parent) :
 	m_pCopyFromButton->setObjectName(QStringLiteral("m_pCopyToComputer"));
 	connect(m_pCopyFromButton, SIGNAL(clicked()), this, SLOT(onCopyFromDevice()));
 
-	m_pAddButton = new QPushButton(tr("Add record"), this);
-	connect(m_pAddButton, SIGNAL(clicked()), this, SLOT(onAddRecord()));
-	m_pAddButton->hide();
-
 	m_pBackupButton = new QPushButton(tr("Backup device file"), this);
 	m_pBackupButton->setObjectName(QStringLiteral("m_pBackupButton"));
 	connect(m_pBackupButton, SIGNAL(clicked()), this, SLOT(onBackup()));
@@ -286,9 +282,9 @@ void DeviceWidget::dispatchSocketMessage(void)
 	unsigned int *pMagicWord;
 	int nLen = m_receivedWord.length();
 	int start = 0;
-	int size;
+//	int size;
 	QByteArray msgAck, tempArray;
-	GET_BOOK_LIST_ACK_MSG bookListAckMsg;
+//	GET_BOOK_LIST_ACK_MSG bookListAckMsg;
 	int i, count;
 
 
@@ -306,11 +302,11 @@ void DeviceWidget::dispatchSocketMessage(void)
 	nLen -= start;
 	unsigned int msgLen = 0;
 	unsigned int cmdID;
-	unsigned int tempData;
+//	unsigned int tempData;
 	if (nLen > 4)
 	{
 		msgLen = *(unsigned int *)(pData + 4);
-		if (msgLen <= nLen)
+		if (msgLen <= (UINT32)nLen)
 		{
 			cmdID = *(unsigned int *)(pData + 8);
 			switch(cmdID)
@@ -523,7 +519,7 @@ void DeviceWidget::connectDevice()
 	refreshButton();
 }
 
-void DeviceWidget::onDeviceChanged(int index)
+void DeviceWidget::onDeviceChanged(int )
 {
 	m_Communication.disconnectDevice();
 	for (;;)
@@ -550,7 +546,7 @@ void DeviceWidget::onRecvData(int socketIndex)
 	QString strBookName, strDBName;
 
 	SOCKET_INFO_MSG *pSocketInfoMsg;
-	COPY_TO_DEVICE_ACK_MSG *pCopyToDeviceAckMsg;
+//	COPY_TO_DEVICE_ACK_MSG *pCopyToDeviceAckMsg;
 //	DELETE_BOOK_FROM_DEVICE_ACK_MSG *pDeleteFromDeviceAckMsg;
 	QString strHostName;
 
@@ -638,48 +634,6 @@ void DeviceWidget::onRecvData(int socketIndex)
 		case CMD_ID_DELETE_FROM_DEVICE_ACK:
 			g_pDeviceBookInfo->clear();
 			m_Communication.getBookList();		
-			break;
-
-		case CMD_ID_COPY_TO_DEVICE_ACK:
-			{
-				int frameIndex = 0;
-				QString dbPath = g_pMainWidget->getCurrentDBName();
-				pCopyToDeviceAckMsg = (COPY_TO_DEVICE_ACK_MSG *)aucData;
-				if (pCopyToDeviceAckMsg->m_result == 0)
-				{
-					if (m_Communication.copyFileToDevice(frameIndex) == -1)
-					{
-						qDebug() << "File copy successfully!";
-						g_pDeviceBookInfo->clear();
-						m_Communication.getBookList();
-					}
-				}
-			}
-			break;
-
-		case CMD_ID_COPY_FILE_TO_DEVICE_ACK:
-			{
-#if 0
-				COPY_FILE_TO_DEVICE_MSG_ACK *pCopyFileToDeviceAckMsg = (COPY_FILE_TO_DEVICE_MSG_ACK *)aucData;
-				int frameIndex = pCopyFileToDeviceAckMsg->m_frameIndex;
-
-				switch (m_deviceState)
-				{
-				case STATE_COPY_TO_DEVICE:
-					setProgress((frameIndex * MAX_FRAME_LEN * 100) / m_Communication.m_fileContent.size());
-					break;
-				case STATE_ADD_RECORD:
-					setProgress(50 + (frameIndex * MAX_FRAME_LEN * 50) / m_Communication.m_fileContent.size());
-					break;
-				}
-
-				if (m_Communication.copyFileToDevice(frameIndex + 1) == -1)
-				{
-					g_pDeviceBookInfo->clear();
-					m_Communication.getBookList();
-				}
-#endif				
-			}
 			break;
 
 		case CMD_ID_COPY_FROM_DEVICE_ACK:
@@ -888,23 +842,6 @@ void DeviceWidget::onCopyToDevice(void)
 	}
 }
 
-void DeviceWidget::onAddRecord()
-{
-	if (g_pDeviceBookInfo->getBookCount() == 0)
-	{
-		return;
-	}
-
-	if (g_pMainWidget->selectDatabase() == false)
-	{
-		return;
-	}
-
-	startOperation(STATE_ADD_RECORD);
-	m_Communication.copyBookFromDevice(m_currentSelectBook, 0);
-
-}
-
 void DeviceWidget::onBackup()
 {
 	if (g_pDeviceBookInfo->getBookCount() == 0)
@@ -1004,7 +941,6 @@ void DeviceWidget::refreshButton()
 	m_pCopyToButton->setEnabled(connected);
 	m_pCopyFromButton->setEnabled(connected && nBookCount);
 	m_pDeleteButton->setEnabled(connected && nBookCount);
-	m_pAddButton->setEnabled(connected && nBookCount);
 	m_pBackupButton->setEnabled(connected && nBookCount);
 	if (m_pDeviceCombo->count() == 0)
 	{

@@ -73,14 +73,13 @@ protected slots:
 	void onCopyToDevice(void);
 	void onCopyFromDevice(void);
 	void onDeleteFile(void);
-	void onAddRecord(void);
 	void onDeviceBookSelected(int currentRow);
 	void onTimerOut(void);
 	void onBackup();
 
 protected:
 	QLabel *m_pSelectLabel, *m_pTotalCount, *m_pLevel0, *m_pLevel1, *m_pLevel2, *m_pLevel3, *m_pLevel4, *m_pLevel5, *m_pLevel6, *m_pLevel7;
-	QPushButton *m_pCopyToButton, *m_pCopyFromButton, *m_pDeleteButton, *m_pRefreshButton, *m_pAddButton, *m_pBackupButton;
+	QPushButton *m_pCopyToButton, *m_pCopyFromButton, *m_pDeleteButton, *m_pRefreshButton, *m_pBackupButton;
 	QPushButton *m_pConnectButton, *m_pAddDeviceButton;
 	QComboBox *m_pDeviceCombo;
 	QListWidget *m_pListWidget;

@@ -176,75 +176,6 @@ void Communication::deleteFile(int bookIndex)
 	m_pTcpSocket->write((const char *)&msg, msg.m_size );
 }
 
-void Communication::copyBookFromDevice(int bookIndex, int frameIndex)
-{
-#if 0
-	DEVICE_INFO *pDevInfo = &m_deviceInfo[m_currentDeviceIndex];
-	int socketIndex = pDevInfo->m_socketIndex;
-	UPD_SOCKET *pSocket = &m_pSocket[socketIndex];
-	COPY_BOOK_FROM_DEVICE_MSG msg;
-	msg.m_cmdID = CMD_ID_COPY_FROM_DEVICE;
-	msg.m_bookIndex = bookIndex;
-	msg.m_frameIndex = frameIndex;
-	pSocket->m_pUdpSocket->writeDatagram((char *)&msg, sizeof(COPY_BOOK_FROM_DEVICE_MSG), pDevInfo->m_deviceAddr, pDevInfo->m_devicePort);
-
-	char logMsg[501];
-	FormatString(logMsg, (UINT8 *)&msg, 16);
-	qDebug() << "Send " << sizeof(COPY_BOOK_FROM_DEVICE_MSG) << " Bytes: " << logMsg;
-
-    /* Used to resend frame */
-    m_lastOpeation = OPERATION_COPY_BOOK_FROM_DEVICE;
-    m_lastBookIndex = bookIndex;
-    m_lastFrameIndex = frameIndex;
-#endif
-}
-
-int Communication::copyFileToDevice(int frameIndex)
-{
-#if 0
-	DEVICE_INFO *pDevInfo = &m_deviceInfo[m_currentDeviceIndex];
-	int socketIndex = pDevInfo->m_socketIndex;
-	UPD_SOCKET *pSocket = &m_pSocket[socketIndex];
-
-	if ((frameIndex * MAX_FRAME_LEN) >= m_fileContent.size())
-	{
-		return (-1);
-	}
-	int size = m_fileContent.size() - frameIndex * MAX_FRAME_LEN;
-	if (size > MAX_FRAME_LEN)
-	{
-		size = MAX_FRAME_LEN;
-	}
-
-	char aucData[2000];
-	COPY_FILE_TO_DEVICE_MSG *pMsg = (COPY_FILE_TO_DEVICE_MSG *)aucData;
-	pMsg->m_cmdID = CMD_ID_COPY_FILE_TO_DEVICE;
-	pMsg->m_frameIndex = frameIndex;
-	pMsg->m_frameLen = size;
-	memcpy(pMsg->m_frameData, m_fileContent.data() + frameIndex * MAX_FRAME_LEN, size);
-
-	pSocket->m_pUdpSocket->writeDatagram(aucData, 8 + size, pDevInfo->m_deviceAddr, pDevInfo->m_devicePort);
-
-    /* Used to resend frame */
-    m_lastOpeation = OPERATION_COPY_FILE_TO_DEVICE;
-    m_lastFrameIndex = frameIndex;
-    return (0);
-#endif
-	return (0);
-}
-
-void Communication::resend()
-{
-    if (m_lastOpeation == OPERATION_COPY_FILE_TO_DEVICE)
-    {
-        copyFileToDevice(m_lastFrameIndex);
-    }
-    else if (m_lastOpeation == OPERATION_COPY_BOOK_FROM_DEVICE)
-    {
-        copyBookFromDevice(m_lastBookIndex, m_lastFrameIndex);
-    }
-}
-
 void Communication::copyFileNameToDevice(QString dbPath)
 {
 
@@ -299,25 +230,6 @@ void Communication::copyFileToDevice(QString dbPath)
 	sendBuffer.append(fileContent, fileSize);
 
 	m_pTcpSocket->write(sendBuffer);
-}
-
-void Communication::saveFile(COPY_BOOK_FROM_DEVICE_MSG_ACK *pAck)
-{
-#if 0
-	int oldSize, totalSize;
-	if (pAck->m_frameIndex == 0)
-	{
-		m_fileContent.resize(0);
-	}
-	oldSize = m_fileContent.size();
-
-	if (pAck->m_frameSize != 0)
-	{
-		totalSize = oldSize + pAck->m_frameSize;
-		m_fileContent.resize(totalSize);
-		memcpy(m_fileContent.data() + oldSize, pAck->m_frameData, pAck->m_frameSize);
-	}
-#endif
 }
 
 void dumpSocketInfo(SOCKET_INFO *pInfo)

@@ -93,8 +93,8 @@ void WordCaptureDialog::onCpatureEnglish(void)
 	int i;
 	ushort uni_a = QChar('a').unicode();
 	ushort uni_z = QChar('z').unicode();
-	ushort uni_A = QChar('A').unicode();
-	ushort uni_Z = QChar('Z').unicode();
+//	ushort uni_A = QChar('A').unicode();
+//	ushort uni_Z = QChar('Z').unicode();
 
 	for (i = 0; i < len; i++)
 	{

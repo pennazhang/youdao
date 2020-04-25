@@ -534,7 +534,6 @@ void Widget::onPrioritySetting()
 
 void Widget::onViewWords()
 {
-	bool ret = false;
 	QString dbFileName = m_pFileName->text();
 	QStringList wordList = m_pWordWidget->getWordList();
 
@@ -1259,22 +1258,22 @@ bool Widget::selectDatabase()
 			QAxObject* sheets = workbook->querySubObject( "Worksheets" );
 	
 			//worksheets count
-			int count = sheets->dynamicCall("Count()").toInt();
+//			int count = sheets->dynamicCall("Count()").toInt();
 			int sheetIndex = 1;
 			{
 				//sheet pointer
 				QAxObject* sheet = sheets->querySubObject( "Item( int )", sheetIndex);
 	
-				QAxObject* rows = sheet->querySubObject( "Rows" );
-				int rowCount = rows->dynamicCall( "Count()" ).toInt(); //unfortunately, always returns 255,
+//				QAxObject* rows = sheet->querySubObject( "Rows" );
+//				int rowCount = rows->dynamicCall( "Count()" ).toInt(); //unfortunately, always returns 255,
 																		// so you have to check somehow validity of cell values
-				QAxObject* columns = sheet->querySubObject( "Columns" );
-				int columnCount = columns->dynamicCall( "Count()" ).toInt(); //similarly, always returns 65535
+//				QAxObject* columns = sheet->querySubObject( "Columns" );
+//				int columnCount = columns->dynamicCall( "Count()" ).toInt(); //similarly, always returns 65535
 	
 				//One of possible ways to get column count
 				int currentColumnIndex = 1;
 				int rowIndex;
-				for (rowIndex = 1; rowIndex < columnCount; rowIndex++)
+				for (rowIndex = 1; rowIndex < 65535; rowIndex++)
 				{
 					QAxObject* cell = sheet->querySubObject( "Cells( int, int )", rowIndex, 1);	// column Index = 1 [word]
 					QVariant value = cell->dynamicCall( "Value()" );
@@ -1457,22 +1456,22 @@ void Widget::onImportXML()
 			QAxObject* sheets = workbook->querySubObject( "Worksheets" );
 	
 			//worksheets count
-			int count = sheets->dynamicCall("Count()").toInt();
+//			int count = sheets->dynamicCall("Count()").toInt();
 			int sheetIndex = 1;
 			{
 				//sheet pointer
 				QAxObject* sheet = sheets->querySubObject( "Item( int )", sheetIndex);
 	
-				QAxObject* rows = sheet->querySubObject( "Rows" );
-				int rowCount = rows->dynamicCall( "Count()" ).toInt(); //unfortunately, always returns 255,
+//				QAxObject* rows = sheet->querySubObject( "Rows" );
+//				int rowCount = rows->dynamicCall( "Count()" ).toInt(); //unfortunately, always returns 255,
 																		// so you have to check somehow validity of cell values
-				QAxObject* columns = sheet->querySubObject( "Columns" );
-				int columnCount = columns->dynamicCall( "Count()" ).toInt(); //similarly, always returns 65535
+//				QAxObject* columns = sheet->querySubObject( "Columns" );
+//				int columnCount = columns->dynamicCall( "Count()" ).toInt(); //similarly, always returns 65535
 	
 				//One of possible ways to get column count
 				int currentColumnIndex = 1;
 				int rowIndex;
-				for (rowIndex = 1; rowIndex < columnCount; rowIndex++)
+				for (rowIndex = 1; rowIndex < 65535; rowIndex++)
 				{
 					QAxObject* cell = sheet->querySubObject( "Cells( int, int )", rowIndex, 1);	// column Index = 1 [word]
 					QVariant value = cell->dynamicCall( "Value()" );

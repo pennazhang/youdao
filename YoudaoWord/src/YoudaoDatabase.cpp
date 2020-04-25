@@ -201,7 +201,7 @@ int YoudaoDatabase::getBrowseWordCount(QString fileName)
 
 void YoudaoDatabase::deleteAllBrowseWord(QString fileName)
 {
-	bool ret = false;
+//	bool ret = false;
 	QString script;
 
 	m_database.setDatabaseName(fileName);

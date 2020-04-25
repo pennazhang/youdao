@@ -21,7 +21,7 @@
 #include "DeviceWidget.h"
 #include "MiscWidget.h"
 
-#define SOFTWARE_RELEASE_VERSION "2.0.7.0"
+#define SOFTWARE_RELEASE_VERSION "2.0.8.0"
 
 namespace Ui {
 class Widget;
