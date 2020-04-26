@@ -1,5 +1,5 @@
-START_LINE = 39  # Start from 1
-END_LINE = 73
+START_LINE = 1  # Start from 1
+END_LINE = 20
 FILENAME = "script\\word.txt"
 
 if (not exists("1478853801633.png")):
@@ -19,7 +19,7 @@ if (len(lines) < END_LINE):
 else:
     endLine = END_LINE
     
-for index in range(START_LINE - 1, endLine):
+for index in range(startLine - 1, endLine):
     line = lines[index]
     word = line.strip()
     print("Line: %d: %s" % (index + 1, word))
@@ -31,9 +31,11 @@ for index in range(START_LINE - 1, endLine):
     if (not exists("1478855089351.png", 5)):
         print("Add word failed for No ICON: WORD")
         exit(0)
+    click(Pattern("1478855089351.png").targetOffset(7,27))
+    wait(1)
     type(word)
-    wait(8)
+    wait(3)
     type(Key.ENTER)
-    if (exists("1478855370876.png", 3)):
+    if (exists("1478855370876.png", 2)):
         print("  --- word exist already!")
         click(Pattern("1478855370876.png").targetOffset(114,40))
