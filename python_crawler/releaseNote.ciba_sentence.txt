@@ -1,0 +1,19 @@
+ciba_sentence.py  -- search english word and sentence from http://www.iciba.com/
+
+Known issue:
+======================================================================================================
+1. 大约有1/8的单词无法获取句子示例，对这部分需要手动查找，添加。
+
+
+Release History
+======================================================================================================
+Version         : 0.0.0.2
+Release Time    : 05-09-2019
+Modification    :
+    1. imporve the software for ciba.
+
+======================================================================================================
+Version         : 0.0.0.1
+Release Time    : 05-05-2019
+Modification    :
+    1. Draft the software.
